@@ -4,7 +4,12 @@ backgroundColor = "#343434"
 elementColor = "#404040"
 textColor = "#FFFFFF"
 
-def mainWindow():
+def mainWindow() -> sg.Window:
+  """
+    Returns a new main window as a PySimpleGUI window
+
+    :return: (sg.Window)
+  """
   mainLayout = [
     [
       sg.Column(
@@ -123,7 +128,12 @@ def mainWindow():
     background_color=backgroundColor
   )
 
-def settingsWindow():
+def settingsWindow() -> sg.Window:
+  """
+    Returns a new settings window as a PySimpleGUI window
+
+    :return: (sg.Window)
+  """
   settingsLayout = [
     [
       sg.Button(
@@ -184,7 +194,12 @@ def settingsWindow():
     background_color=backgroundColor
   )
 
-def bookWindow():
+def bookWindow() -> sg.Window:
+  """
+    Returns a new window for adding books as a PySimpleGUI window
+
+    :return: (sg.Window)
+  """
   bookLayout = [
     [
       sg.Text(
@@ -317,11 +332,18 @@ def bookWindow():
     element_justification="center"
   )
 
-def userWindow(id):
+def userWindow(id: int) -> sg.Window:
+  """
+    Returns a new window to add users as a PySimpleGUI window
+
+    :param id: An id for the new user
+    :type id: (int)
+    :return: (sg.Window)
+  """
   userLayout = [
     [
       sg.Text(
-        "Add  user",
+        "Add user",
         text_color=textColor,
         background_color=backgroundColor,
         font="Arial 25"
@@ -420,7 +442,18 @@ def userWindow(id):
     element_justification="center"
   )
 
-def profileWindow(firstName, lastName, email):
+def profileWindow(firstName: str, lastName: str, email: str) -> sg.Window:
+  """
+    Returns a new window with the data from a user as a PySimpleGUI window
+
+    :param firstName: The first name of the user
+    :type firstName: (str)
+    :param lastName: The last name of the user
+    :type lastName: (str)
+    :param email: The email address of the user
+    :type email: (str)
+    :return: (sg.Window)
+  """
   profileLayout = [
     [
       sg.Text(
@@ -517,7 +550,12 @@ def profileWindow(firstName, lastName, email):
     element_justification="center"
   )
 
-def confirmDeleteWindow():
+def confirmDeleteWindow() -> sg.popup_yes_no:
+  """
+    Returns a new popup to confirm delete as a PySimpleGUI popup
+
+    :return: (sg.popup_yes_no)
+  """
   return sg.popup_yes_no(
     "Are you sure to delete this?",
     button_color=(textColor, elementColor),
@@ -527,7 +565,14 @@ def confirmDeleteWindow():
     no_titlebar=True
   )
 
-def overdrawnWindow(overdrawnBooks):
+def overdrawnWindow(overdrawnBooks: list) -> sg.Window:
+  """
+    Returns a new window with all overdrawn books from a user as a PySimpleGUI window
+
+    :param overdrawnBooks: A list of all overdrawn books
+    :type overdrawnBooks: (list)
+    :return: (sg.Window)
+  """
   overdrawnLayout = [
     [
       sg.Text(
@@ -582,7 +627,14 @@ def overdrawnWindow(overdrawnBooks):
     element_justification="center"
   )
 
-def deleteBookWindow(books):
+def deleteBookWindow(books: list) -> sg.Window:
+  """
+    Returns a new window to delete books as a PySimpleGUI window
+
+    :param books: Books that can be deleted
+    :type books: (list)
+    :return: (sg.Window)
+  """
   deleteBookLayout = [
     [
       sg.Text(
