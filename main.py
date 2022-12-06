@@ -24,9 +24,7 @@ def main():
         while True:
           event, values = settingsWindow.read()
           match event:
-            case sg.WIN_CLOSED:
-              break
-            case "EXIT":
+            case sg.WIN_CLOSED | "EXIT":
               break
             case "-ADDBOOK-":
               bookWindow = WindowManager.bookWindow()
@@ -45,23 +43,20 @@ def main():
               bookWindow.close()
             case "-ADDUSER-":
               if (len(users) > 0):
-                idOkay = False
-                while not idOkay:
+                while True:
                   id = str(randint(10000000, 99999999))
                   for elements in users:
-                    idOkay = True
                     if elements.id == id:
-                      idOkay = False
                       break
+                  else:
+                    break
               else:
                 id = str(randint(10000000, 99999999))
               userWindow = WindowManager.userWindow(id)
               while True:
                 event, values = userWindow.read()
                 match event:
-                  case sg.WIN_CLOSED:
-                    break
-                  case "EXIT":
+                  case sg.WIN_CLOSED | "EXIT":
                     break
                   case "-USERSAVE-":
                     if values["-FIRSTNAME-"] != "" and values["-LASTNAME-"] != "" and values["-EMAIL-"] != "":
@@ -78,9 +73,7 @@ def main():
               while True:
                 event, values = overdrawnWindow.read()
                 match event:
-                  case sg.WIN_CLOSED:
-                    break
-                  case "EXIT":
+                  case sg.WIN_CLOSED | "EXIT":
                     break
                   case "-BOOKLIST-":
                     if len(values["-BOOKLIST-"]) == 1:
@@ -97,9 +90,7 @@ def main():
               while True:
                 event, values = deleteBookWindow.read()
                 match event:
-                  case sg.WIN_CLOSED:
-                    break
-                  case "EXIT":
+                  case sg.WIN_CLOSED | "EXIT":
                     break
                   case "-BOOKLIST-":
                     if len(values["-BOOKLIST-"]) == 1:
@@ -152,9 +143,7 @@ def main():
         while True:
           event, values = profileWindow.read()
           match event:
-            case sg.WIN_CLOSED:
-              break
-            case "EXIT":
+            case sg.WIN_CLOSED | "EXIT":
               break
             case "-USERSAVE-":
               DataManager.changeUserData(user.id, values["-FIRSTNAME-"], values["-LASTNAME-"], values["-EMAIL-"])

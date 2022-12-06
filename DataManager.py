@@ -1,16 +1,9 @@
+"""
+  The DataManager handels the reading and writing to the json file
+"""
+
 import json
 from datetime import date
-
-class User:
-  """
-    The definition of a user
-  """
-  def __init__(self, id: int, firstName: str, lastName: str, email: str, books: list):
-    self.id = id
-    self.firstName = firstName
-    self.lastName = lastName
-    self.email = email
-    self.books = books
 
 class Book:
   """
@@ -26,7 +19,18 @@ class Book:
     self.pages = pages
     self.borrowUntil = borrowUntil
 
-def getBooks() -> list:
+class User:
+  """
+    The definition of a user
+  """
+  def __init__(self, id: int, firstName: str, lastName: str, email: str, books: list[Book]):
+    self.id = id
+    self.firstName = firstName
+    self.lastName = lastName
+    self.email = email
+    self.books = books
+
+def getBooks() -> list[Book]:
   """
     Returns all books from the json file
 
@@ -50,7 +54,7 @@ def getBooks() -> list:
     ))
   return books
 
-def getUsers() -> list:
+def getUsers() -> list[User]:
   """
     Returns all users from the json file
 

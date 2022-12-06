@@ -1,3 +1,7 @@
+"""
+  The WindowManager handels creating new windows
+"""
+
 import PySimpleGUI as sg
 
 backgroundColor = "#343434"
